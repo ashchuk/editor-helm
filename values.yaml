@@ -6,11 +6,11 @@ replicaCount: 1
 
 image:
   frontend:
-    repository: editor.frontend
+    repository: registry.mlashchuk/editor.frontend
     tag: stable
     pullPolicy: IfNotPresent
   api:
-    repository: editor.api
+    repository: registry.mlashchuk/editor.api
     tag: stable
     pullPolicy: IfNotPresent
 
