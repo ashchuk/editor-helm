@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "editor.fullname" . }}.api
+  name: {{ include "editor.fullname" . }}-api
   labels:
-{{ include "editor.labels" . | indent 4 }}.api
+{{ include "editor.labels" . | indent 4 }}-api
 spec:
   type: {{ .Values.service.api.type }}
   ports:
@@ -12,16 +12,16 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "editor.name" . }}.api
+    app.kubernetes.io/name: {{ include "editor.name" . }}-api
     app.kubernetes.io/instance: {{ .Release.Name }}
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "editor.fullname" . }}.frontend
+  name: {{ include "editor.fullname" . }}-frontend
   labels:
-{{ include "editor.labels" . | indent 4 }}.frontend
+{{ include "editor.labels" . | indent 4 }}-frontend
 spec:
   type: {{ .Values.service.frontend.type }}
   ports:
@@ -30,5 +30,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "editor.name" . }}.frontend
+    app.kubernetes.io/name: {{ include "editor.name" . }}-frontend
     app.kubernetes.io/instance: {{ .Release.Name }}

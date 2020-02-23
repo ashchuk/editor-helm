@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "editor.fullname" . }}.api
+  name: {{ include "editor.fullname" . }}-api
   labels:
-{{ include "editor.labels" . | indent 4 }}.api
+{{ include "editor.labels" . | indent 4 }}-api
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "editor.name" . }}.api
+      app.kubernetes.io/name: {{ include "editor.name" . }}-api
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "editor.name" . }}.api
+        app.kubernetes.io/name: {{ include "editor.name" . }}-api
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
@@ -61,19 +61,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "editor.fullname" . }}.frontend
+  name: {{ include "editor.fullname" . }}-frontend
   labels:
-{{ include "editor.labels" . | indent 4 }}.frontend
+{{ include "editor.labels" . | indent 4 }}-frontend
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "editor.name" . }}.frontend
+      app.kubernetes.io/name: {{ include "editor.name" . }}-frontend
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "editor.name" . }}.frontend
+        app.kubernetes.io/name: {{ include "editor.name" . }}-frontend
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
