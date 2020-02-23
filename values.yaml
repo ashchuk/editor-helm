@@ -5,9 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
-  pullPolicy: IfNotPresent
+  frontend:
+    repository: editor.frontend
+    tag: stable
+    pullPolicy: IfNotPresent
+  api:
+    repository: editor.api
+    tag: stable
+    pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -32,8 +37,12 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  frontend:
+    type: ClusterIP
+    port: 80
+  api:
+    type: ClusterIP
+    port: 8080
 
 ingress:
   enabled: false
