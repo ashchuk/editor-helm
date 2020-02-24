@@ -35,6 +35,10 @@ spec:
             backend:
               serviceName: {{ $fullName }}-frontend
               servicePort: http
+          - path: /swagger
+            backend:
+              serviceName: {{ $fullName }}-api
+              servicePort: http
           - path: /api
             backend:
               serviceName: {{ $fullName }}-api
